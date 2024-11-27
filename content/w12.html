@@ -152,11 +152,66 @@ for y in range(n):
     for x in range(n):
         print("(", x, ", ", y, ")", sep="")
 </pre>
-<p><br/><br/></p>
 <p></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/gq7w9y1HIP8?si=_Jv5F7dR4lbfJ6jb" title="YouTube video player" width="560"></iframe></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+ 
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 400, height = 400)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+ 
+# 每一格的 pixel 數
+gs = 20
+ 
+#gs*tc = canvas width and height
+ 
+ctx = canvas.getContext("2d")
+width = 11
+height = 11
+ 
+ 
+for i in range(width):
+     for j in range(height):
+        #dRect(i*gs, j*gs, gs, gs, 1, "lightgrey")
+         ctx.lineWidth = 1
+         ctx.strokeStyle = 'red'
+         ctx.beginPath();
+         ctx.rect(i*gs,j*gs,gs,gs)
+         ctx.stroke();
+ 
+from browser import html
+from browser import document as doc
+ 
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 400, height = 400)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+ 
+# 每一格的 pixel 數
+gs = 20
+ 
+#gs*tc = canvas width and height
+ 
+ctx = canvas.getContext("2d")
+width = 11
+height = 11
+ 
+ 
+for i in range(width):
+     for j in range(height):
+        #dRect(i*gs, j*gs, gs, gs, 1, "lightgrey")
+         ctx.lineWidth = 1
+         ctx.strokeStyle = 'red'
+         ctx.beginPath();
+         ctx.rect(i*gs,j*gs,gs,gs)
+         ctx.stroke();
+</pre>
 <p></p>
-<p></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/gq7w9y1HIP8?si=_Jv5F7dR4lbfJ6jb" title="YouTube video player" width="560"></iframe></p><br />HW 3 Exam << <a href='HW 3 Exam.html'>Previous</a> <a href='w7-2.html'>Next</a> >> w7-2</div>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_516268"></div>
+</div><br />HW 3 Exam << <a href='HW 3 Exam.html'>Previous</a> <a href='w7-2.html'>Next</a> >> w7-2</div>
         
     <!-- footer -->
       <div class="container">
