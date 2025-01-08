@@ -151,25 +151,25 @@ img.add_border {
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
 from browser import document as doc
 import math
- 
- 
+  
+  
 def draw_maze(angle_degrees):
     # 创建和添加画布
     canvas = html.CANVAS(width=1200, height=1200)
     brython_div = doc["brython_div1"]
     brython_div &lt;= canvas
- 
+  
     # 获取绘图上下文
     ctx = canvas.getContext("2d")
- 
+  
     # 设置绘图参数
     pixel_scale = 100
     offset_x = 32 * 2
-    offset_y = 16 * 2
+    offset_y = 17 * 2
     # 整体向右移动的偏移量
     move_right_offset = 200
     angle_radians = math.radians(angle_degrees)
- 
+  
     # 定义迷宫线条
     lines = [
         ((0, 0), (1, 0)),
@@ -189,26 +189,26 @@ def draw_maze(angle_degrees):
         ((0, 1), (4, 1)),
         ((4, 1), (4, 2)),
     ]
- 
+  
     # 旋转并绘制迷宫线条
     ctx.strokeStyle = "blue"
     ctx.lineWidth = 2
     for line in lines:
         start = line[0]
         end = line[1]
- 
+  
         # 旋转起点坐标
         start_x_rotated = start[0] * pixel_scale * math.cos(angle_radians) - start[1] * pixel_scale * math.sin(
             angle_radians)
         start_y_rotated = start[0] * pixel_scale * math.sin(angle_radians) + start[1] * pixel_scale * math.cos(
             angle_radians)
- 
+  
         # 旋转终点坐标
         end_x_rotated = end[0] * pixel_scale * math.cos(angle_radians) - end[1] * pixel_scale * math.sin(
             angle_radians)
         end_y_rotated = end[0] * pixel_scale * math.sin(angle_radians) + end[1] * pixel_scale * math.cos(
             angle_radians)
- 
+  
         ctx.beginPath()
         ctx.moveTo(
             offset_x + move_right_offset + start_x_rotated,
@@ -219,10 +219,10 @@ def draw_maze(angle_degrees):
             offset_y + end_y_rotated
         )
         ctx.stroke()
- 
+  
     return ctx, offset_x + move_right_offset, offset_y, pixel_scale
- 
- 
+  
+  
 def find_path():
     # 简单的路径示例，这里假设的路径，实际需要更复杂的算法
     # 为了维持原本迷宫路线，这里路径假设不破坏迷宫已有路线
@@ -242,8 +242,8 @@ def find_path():
         ((2.5, 4.5), (2.5, 5))
     ]
     return path
- 
- 
+  
+  
 def draw_path(ctx, offset_x, offset_y, angle_degrees, path, pixel_scale):
     angle_radians = math.radians(angle_degrees)
     ctx.strokeStyle = "red"
@@ -251,19 +251,19 @@ def draw_path(ctx, offset_x, offset_y, angle_degrees, path, pixel_scale):
     for line in path:
         start = line[0]
         end = line[1]
- 
+  
         # 旋转起点坐标
         start_x_rotated = start[0] * pixel_scale * math.cos(angle_radians) - start[1] * pixel_scale * math.sin(
             angle_radians)
         start_y_rotated = start[0] * pixel_scale * math.sin(angle_radians) + start[1] * pixel_scale * math.cos(
             angle_radians)
- 
+  
         # 旋转终点坐标
         end_x_rotated = end[0] * pixel_scale * math.cos(angle_radians) - end[1] * pixel_scale * math.sin(
             angle_radians)
         end_y_rotated = end[0] * pixel_scale * math.sin(angle_radians) + end[1] * pixel_scale * math.cos(
             angle_radians)
- 
+  
         ctx.beginPath()
         ctx.moveTo(
             offset_x + start_x_rotated,
@@ -274,8 +274,8 @@ def draw_path(ctx, offset_x, offset_y, angle_degrees, path, pixel_scale):
             offset_y + end_y_rotated
         )
         ctx.stroke()
- 
- 
+  
+  
 def label_coordinate(ctx, offset_x, offset_y, text_angle_degrees):
     text_angle_radians = math.radians(text_angle_degrees)
     ctx.font = "18px Arial"
@@ -289,10 +289,10 @@ def label_coordinate(ctx, offset_x, offset_y, text_angle_degrees):
     ctx.save()
     ctx.translate(offset_x, offset_y)
     ctx.rotate(text_angle_radians)
-    ctx.fillText("(32, 16)", 10, - 15)
+    ctx.fillText("(32, 46)", 10, - 15)
     ctx.restore()
- 
- 
+  
+  
 if __name__ == "__main__":
     # 调整迷宫角度，这里设置为30度，可以根据需要修改
     maze_angle = 0
@@ -301,8 +301,7 @@ if __name__ == "__main__":
     ctx, offset_x, offset_y, pixel_scale = draw_maze(maze_angle)
     path = find_path()
     draw_path(ctx, offset_x, offset_y, maze_angle, path, pixel_scale)
-    label_coordinate(ctx, offset_x, offset_y, text_angle)</pre>
-<br />HW 4 Exam << <a href='HW 4 Exam.html'>Previous</a> <a href='Final Report.html'>Next</a> >> Final Report</div>
+    label_coordinate(ctx, offset_x, offset_y, text_angle)</pre><br />HW 4 Exam << <a href='HW 4 Exam.html'>Previous</a> <a href='Final Report.html'>Next</a> >> Final Report</div>
         
     <!-- footer -->
       <div class="container">
